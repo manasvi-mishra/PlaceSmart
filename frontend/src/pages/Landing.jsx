@@ -1,0 +1,44 @@
+import { ArrowRight, BrainCircuit, Building2, CheckCircle2, GraduationCap, ShieldCheck, Sparkles, Users, Zap } from "lucide-react";
+import Logo from "../components/Logo";
+
+const roles = [
+  { id: "student", title: "Student", icon: GraduationCap, color: "from-blue-500 to-cyan-400", text: "Build your profile, discover relevant roles, apply faster and track your placement journey." },
+  { id: "coordinator", title: "Placement Cell", icon: Building2, color: "from-violet-500 to-fuchsia-400", text: "Manage students, drives, readiness analytics, notices and recruiter collaboration." },
+  { id: "recruiter", title: "Recruiter", icon: Users, color: "from-emerald-500 to-teal-400", text: "Publish roles, discover matching candidates and move from shortlist to interview." }
+];
+
+function MiniDashboard() {
+  return <div className="scene-3d relative mx-auto h-[390px] w-full max-w-[570px]">
+    <div className="absolute inset-0 rounded-[40px] bg-blue-500/10 blur-3xl" />
+    <div className="orbit"/><div className="orbit two"/>
+    <div className="float-3d absolute left-[7%] top-[7%] w-[86%] rounded-[30px] border border-white/80 bg-white/75 p-4 shadow-[0_35px_90px_rgba(37,99,235,.18)] backdrop-blur-xl">
+      <div className="flex items-center justify-between border-b border-slate-100 pb-3"><div className="flex items-center gap-2"><div className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-violet-600 text-white"><GraduationCap size={16}/></div><div><div className="text-xs font-extrabold text-slate-900">PlaceSmart</div><div className="text-[9px] text-slate-400">Placement command center</div></div></div><div className="rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-extrabold text-emerald-600">LIVE</div></div>
+      <div className="grid grid-cols-3 gap-2 py-4">
+        {[['92%','Profile match'],['18','Open roles'],['74%','Readiness']].map(([v,l],i)=><div key={l} className="depth-1 rounded-2xl border border-slate-100 bg-white p-3 shadow-sm"><div className={`text-lg font-black ${i===0?'text-blue-600':i===1?'text-violet-600':'text-emerald-600'}`}>{v}</div><div className="mt-1 text-[9px] font-semibold text-slate-400">{l}</div></div>)}
+      </div>
+      <div className="grid grid-cols-[1.35fr_.65fr] gap-3">
+        <div className="rounded-2xl bg-slate-950 p-4 text-white shadow-xl"><div className="flex justify-between"><div><div className="text-[9px] font-bold text-slate-400">AI MATCH</div><div className="mt-1 text-sm font-extrabold">Data Engineer</div></div><div className="grid h-8 w-8 place-items-center rounded-xl bg-white/10"><BrainCircuit size={15}/></div></div><div className="mt-5 h-2 rounded-full bg-white/10"><div className="h-2 w-[92%] rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"/></div><div className="mt-2 flex justify-between text-[9px] text-slate-400"><span>Skill alignment</span><b className="text-cyan-300">92%</b></div></div>
+        <div className="rounded-2xl border border-slate-100 bg-white p-4 shadow-sm"><div className="text-[9px] font-bold text-slate-400">PIPELINE</div><div className="mt-4 space-y-3">{[['Applied','12'],['Shortlisted','5'],['Interview','2']].map(([a,b])=><div key={a} className="flex items-center justify-between text-[10px] font-bold"><span className="text-slate-500">{a}</span><span className="rounded-full bg-slate-100 px-2 py-1 text-slate-800">{b}</span></div>)}</div></div>
+      </div>
+    </div>
+    <div className="absolute bottom-[6%] right-[1%] z-10 flex items-center gap-2 rounded-2xl border border-white/80 bg-white/85 px-4 py-3 shadow-xl backdrop-blur-xl"><span className="glow-dot grid h-8 w-8 place-items-center rounded-full bg-blue-600 text-white"><Zap size={14} fill="currentColor"/></span><div><div className="text-[10px] font-extrabold text-slate-900">Smart matching</div><div className="text-[9px] text-slate-400">Skills → opportunities</div></div></div>
+  </div>;
+}
+
+export default function Landing({ onRole }) {
+  const scrollToRoles = () => document.getElementById("roles")?.scrollIntoView({ behavior: "smooth" });
+  return <div className="landing-dark min-h-screen overflow-hidden bg-[#05070b] text-slate-100">
+    <header className="relative z-30 flex items-center justify-between px-5 py-5 md:px-12"><Logo/><div className="hidden items-center gap-8 text-xs font-extrabold text-slate-500 md:flex"><span>AI MATCHING</span><span>ROLE-BASED</span><span>COLLEGE READY</span></div><button onClick={scrollToRoles} className="rounded-xl border border-slate-200 bg-white/70 px-4 py-2 text-sm font-extrabold text-slate-700 shadow-sm backdrop-blur hover:-translate-y-0.5 hover:border-blue-200">Explore</button></header>
+    <main className="grid-bg">
+      <section className="hero-shell relative overflow-hidden px-6 pb-16 pt-10 md:px-12 md:pb-24 md:pt-16">
+        <div className="absolute -left-32 top-20 h-96 w-96 rounded-full bg-blue-400/15 blur-3xl"/><div className="absolute -right-32 top-10 h-96 w-96 rounded-full bg-violet-400/15 blur-3xl"/>
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_.95fr]">
+          <div className="max-w-2xl pt-5 lg:pt-0"><div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white/70 px-4 py-2 text-[11px] font-extrabold text-blue-700 shadow-sm backdrop-blur"><Sparkles size={14}/> AI-POWERED PLACEMENT ECOSYSTEM</div><h1 className="display-font text-5xl font-black leading-[1.02] tracking-[-.045em] text-slate-950 md:text-7xl">Connect talent.<br/><span className="gradient-text">Create opportunity.</span></h1><p className="mt-6 max-w-xl text-base leading-8 text-slate-500 md:text-lg">PlaceSmart brings students, recruiters and placement cells into one intelligent workspace — with skill matching, verified workflows and real-time placement visibility.</p><div className="mt-8 flex flex-wrap gap-3"><button onClick={scrollToRoles} className="group inline-flex items-center gap-3 rounded-2xl bg-slate-950 px-6 py-4 text-sm font-extrabold text-white shadow-[0_18px_45px_rgba(15,23,42,.2)] transition hover:-translate-y-1 hover:bg-blue-600">Enter PlaceSmart <ArrowRight size={17} className="transition group-hover:translate-x-1"/></button><div className="flex items-center gap-2 rounded-2xl border border-white/80 bg-white/65 px-4 py-3 text-xs font-bold text-slate-500 backdrop-blur"><CheckCircle2 size={16} className="text-emerald-500"/> Three connected workspaces</div></div><div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs font-bold text-slate-400"><span className="flex items-center gap-2"><ShieldCheck size={14} className="text-blue-500"/> Role-based access</span><span className="flex items-center gap-2"><BrainCircuit size={14} className="text-violet-500"/> Skill intelligence</span><span className="flex items-center gap-2"><Zap size={14} className="text-amber-500"/> Faster decisions</span></div></div>
+          <MiniDashboard/>
+        </div>
+      </section>
+      <section id="roles" className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-24"><div className="mx-auto mb-10 max-w-2xl text-center"><p className="text-[11px] font-black uppercase tracking-[.22em] text-blue-600">Choose your workspace</p><h2 className="display-font mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">One platform. Three experiences.</h2><p className="mt-3 text-sm leading-6 text-slate-500">Each role gets a focused workspace with the tools it actually needs.</p></div><div className="grid gap-6 md:grid-cols-3">{roles.map(({id,title,icon:Icon,color,text},idx)=><button key={id} onClick={()=>onRole(id)} className="card-3d group scene-3d relative overflow-hidden rounded-[30px] border border-white bg-white/80 p-7 text-left shadow-[0_18px_60px_rgba(15,23,42,.07)] backdrop-blur-xl"><div className={`absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br ${color} opacity-10 blur-2xl transition group-hover:opacity-25`}/><div className="relative"><div className={`depth-1 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${color} text-white shadow-lg`}><Icon size={26}/></div><div className="mt-7 flex items-center justify-between"><h3 className="display-font text-xl font-black text-slate-950">{title}</h3><span className="rounded-full bg-slate-100 px-2.5 py-1 text-[9px] font-black text-slate-400">0{idx+1}</span></div><p className="mt-3 min-h-[72px] text-sm leading-6 text-slate-500">{text}</p><span className="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue-600">Open workspace <ArrowRight size={16} className="transition group-hover:translate-x-1"/></span></div></button>)}</div></section>
+    </main>
+    <footer className="border-t border-slate-200/70 bg-white px-6 py-7 text-center text-xs font-bold text-slate-400">PlaceSmart • Smart placements, connected careers • Hackathon-ready platform</footer>
+  </div>;
+}
